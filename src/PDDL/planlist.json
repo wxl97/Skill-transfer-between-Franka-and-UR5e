@@ -1,0 +1,15 @@
+{
+  "shaft1": [
+    [
+      "go_to",
+      "pickup_position_shaft1"
+    ],
+    ["grasp"],
+    [
+      "go_to",
+      "place_position_shaft1"
+    ],
+    ["insertion"],
+    ["release_gripper"]
+  ]
+}

@@ -1,0 +1,256 @@
+{
+    "control_mode": ["position_control", "impedance_control", "gripper"],
+  
+    "motion_planning": {
+      "planner": "RRT",
+      "max_iterations": 1000,
+      "max_time": 5.0,
+      "step_size": 0.01,
+      "goal_bias": 0.05,
+  
+      "cartesian_control": {
+        "enabled": true,
+        "eef_step": 0.01,
+        "jump_threshold": 0.0,
+        "avoid_collisions": true,
+        "interpolate_pose_list": false,
+        "max_attempts": 5
+      }
+    },
+  
+    "known_poses": {
+      "external_gripper_1": [0.29003609, 0.24138599, 0.28450157, 0.69904768, -0.71324292, -0.03568994, 0.03664837],
+      "external_gripper_2": [0.29003609, 0.41738599, 0.28570157, 0.69904768, -0.71324292, -0.03568994, 0.03664837],
+      "external_gripper_3": [-0.33419545, 0.25438599, 0.28107988, 0.69260607, 0.71911581, 0.02873043, 0.04841313],
+      "external_gripper_4": [-0.33719545, 0.43195639, 0.28087988, 0.69260607, 0.71911581, 0.02873043, 0.04841313],
+      "paperclip_pose": [-0.11284821, 0.49880467, 0.34789296, 0.99949736, 0.02080848, -0.02390890, 0.00061911],
+      "paperclip_box_pose": [0.02227733, 0.41434296, 0.43307466, 0.99920864, -0.02848099, 0.02704227, 0.00629482],
+      "tape_pose": [0.08020998, 0.44082903, 0.28853382, 0.99977734, -0.00383799, -0.00697007, 0.01954370],
+      "tape_box_pose": [0.17202790, 0.37989342, 0.30480499, -0.99906389, 0.03824988, 0.01249631, 0.01587809],
+      "cap_pose": [0.08069315, 0.38589529, 0.29274058, 0.99986059, -0.00537120, -0.00658427, 0.01437314],
+      "tape_box_pose_cap": [0.17292790, 0.37849342, 0.30850499, -0.99906389, 0.03824988, 0.01249631, 0.01587809],
+      "close_pensil_box": [0.09985239, 0.45239361, 0.24129792, -0.99957097, 0.02696426, 0.00468595, 0.01043259],
+      "grasp_pensil_box": [0.10582207, 0.53163591, 0.21805196, -0.70165603, 0.71247927, -0.00647540, 0.00318650],
+      "binder_clip": [0.18477971, 0.29459526, 0.27472102, 0.99980168, -0.01597893, -0.00413681, 0.01114234],
+      "sticky_note": [0.07477971, 0.26359526, 0.28672210, 0.99980168, -0.01597893, -0.00413681, 0.01114234],
+      "push_large_box": [-0.11427270, 0.16168675, 0.23282645, 0.99994546, -0.00766231, 0.00660662, 0.00259094],
+      "move_tape_box_pose": [0.16158849, 0.38695163, 0.26064749, 0.99999993, 0.00020410, -0.00020411, 0.00022110],
+      "put_tape_box_pose": [-0.08048849, 0.25695163, 0.26064749, 0.99999993, 0.00020410, -0.00020411, 0.00022110],
+      "move_binder_clip_box": [0.18161458, 0.22193064, 0.22077543, 0.99999999, 0.00007714, -0.00005113, 0.00007833],
+      "put_binder_clip_box": [-0.15248849, 0.25695163, 0.22564749, 0.99999993, 0.00020410, -0.00020411, 0.00022110]
+    },
+  
+    "filter_params": {
+      "alpha": 0.05
+    },
+  
+  
+    "skills": [
+      {
+        "name": "go_to",
+        "type": "primitive",
+        "control_mode": "position_control",
+        "description": "Move to known pose"
+      },
+      {
+        "name": "go_to_with_rrt",
+        "type": "primitive",
+        "control_mode": "position_control",
+        "description": "Path-planned motion using RRT"
+      },
+      {
+        "name": "homing_joint_position",
+        "type": "primitive",
+        "control_mode": "position_control",
+        "description": "Return to home joint configuration"
+      },
+      {
+        "name": "grasp",
+        "type": "primitive",
+        "control_mode": "gripper",
+        "description": "Grasp object with preset width and force"
+      },
+      {
+        "name": "open_gripper",
+        "type": "primitive",
+        "control_mode": "gripper",
+        "description": "Open gripper to release object"
+      },
+      {
+        "name": "change_gripper",
+        "type": "skill",
+        "control_mode": "position_control",
+        "description": "Swap to different gripper tool"
+      },
+      {
+        "name": "release_gripper",
+        "type": "primitive",
+        "control_mode": "gripper",
+        "description": "Open gripper to release external tool"
+      },
+      {
+        "name": "insertion",
+        "type": "skill",
+        "control_mode": "impedance_control",
+        "description": "Compliant insertion with Lissajous micro-motion"
+      },
+      {
+        "name": "desk_sorting",
+        "type": "skill",
+        "control_mode": "position_control",
+        "description": "Pick and place objects for desk organizing"
+      }
+    ],
+  
+    "tools": {
+      "external_gripper_1": {
+        "name": "external_gripper_1",
+        "type": "clip-on",
+        "install_pose": "external_gripper_1",
+        "grasp_width": 0.07,
+        "release_width": 0.09
+      },
+      "external_gripper_2": {
+        "name": "external_gripper_2",
+        "type": "clip-on",
+        "install_pose": "external_gripper_2",
+        "grasp_width": 0.06,
+        "release_width": 0.085
+      },
+      "external_gripper_3": {
+        "name": "external_gripper_3",
+        "type": "clip-on",
+        "install_pose": "external_gripper_3",
+        "grasp_width": 0.035,
+        "release_width": 0.07
+      },
+      "external_gripper_4": {
+        "name": "external_gripper_4",
+        "type": "clip-on",
+        "install_pose": "external_gripper_4",
+        "grasp_width": 0.03,
+        "release_width": 0.06
+      }
+    },
+  
+    "objects": {
+      "shaft1": {
+        "type": "shaft",
+        "task": "Gear Assembly",
+        "gripper": "external_gripper_3",
+        "grasp_width": 0.035,
+        "requires_insertion": true
+      },
+      "shaft2": {
+        "type": "shaft",
+        "task": "Gear Assembly",
+        "gripper": "external_gripper_4",
+        "grasp_width": 0.015,
+        "requires_insertion": true
+      },
+      "shaft3": {
+        "type": "shaft",
+        "task": "Gear Assembly",
+        "gripper": "external_gripper_3",
+        "grasp_width": 0.03,
+        "requires_insertion": true
+      },
+      "gear1": {
+        "type": "gear",
+        "task": "Gear Assembly",
+        "gripper": "external_gripper_1",
+        "grasp_width": 0.05,
+        "requires_insertion": false
+      },
+      "gear2": {
+        "type": "gear",
+        "task": "Gear Assembly",
+        "gripper": "external_gripper_2",
+        "grasp_width": 0.08,
+        "requires_insertion": true
+      },
+      "gear3": {
+        "type": "gear",
+        "task": "Gear Assembly",
+        "gripper": "external_gripper_1",
+        "grasp_width": 0.05,
+        "requires_insertion": false
+      },
+      "paperclip": {
+        "type": "misc",
+        "task": "Desk Organizing and Drawer Storage",
+        "pose": "paperclip_pose"
+      },
+      "paperclip_box": {
+        "type": "container",
+        "task": "Desk Organizing and Drawer Storage",
+        "pose": "paperclip_box_pose"
+      },
+      "tape": {
+        "type": "misc",
+        "task": "Desk Organizing and Drawer Storage",
+        "pose": "tape_pose"
+      },
+      "tape_box": {
+        "type": "container",
+        "task": "Desk Organizing and Drawer Storage",
+        "pose": "tape_box_pose"
+      },
+      "cap": {
+        "type": "misc",
+        "task": "Desk Organizing and Drawer Storage",
+        "pose": "cap_pose"
+      },
+      "tape_box_cap": {
+        "type": "container",
+        "task": "Desk Organizing and Drawer Storage",
+        "pose": "tape_box_pose_cap"
+      },
+      "closed_pencil_box": {
+        "type": "container",
+        "task": "Desk Organizing and Drawer Storage",
+        "pose": "close_pensil_box"
+      },
+      "grasp_pencil_box": {
+        "type": "container",
+        "task": "Desk Organizing and Drawer Storage",
+        "pose": "grasp_pensil_box"
+      },
+      "binder_clip": {
+        "type": "misc",
+        "task": "Desk Organizing and Drawer Storage",
+        "pose": "binder_clip"
+      },
+      "sticky_note": {
+        "type": "misc",
+        "task": "Desk Organizing and Drawer Storage",
+        "pose": "sticky_note"
+      },
+      "push_large_box": {
+        "type": "container",
+        "task": "Desk Organizing and Drawer Storage",
+        "pose": "push_large_box"
+      },
+      "move_tape_box": {
+        "type": "container",
+        "task": "Desk Organizing and Drawer Storage",
+        "pose": "move_tape_box_pose"
+      },
+      "put_tape_box": {
+        "type": "container",
+        "task": "Desk Organizing and Drawer Storage",
+        "pose": "put_tape_box_pose"
+      },
+      "move_binder_clip_box": {
+        "type": "container",
+        "task": "Desk Organizing and Drawer Storage",
+        "pose": "move_binder_clip_box"
+      },
+      "put_binder_clip_box": {
+        "type": "container",
+        "task": "Desk Organizing and Drawer Storage",
+        "pose": "put_binder_clip_box"
+      }
+    }
+  }
+  

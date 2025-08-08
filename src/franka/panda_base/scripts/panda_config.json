@@ -1,0 +1,224 @@
+{
+  "control_mode": ["position_control", "impedance_control", "gripper"],
+
+  "motion_planning": {
+    "planner": "RRT",
+    "max_iterations": 1000,
+    "max_time": 5.0,
+    "step_size": 0.01,
+    "goal_bias": 0.05,
+
+    "cartesian_control": {
+      "enabled": true,
+      "eef_step": 0.01,
+      "jump_threshold": 0.0,
+      "avoid_collisions": true,
+      "interpolate_pose_list": false,
+      "max_attempts": 5
+    }
+  },
+
+
+  "home_joint_positions": {
+    "1": [0.010388, -0.345771, -0.036605, -1.737850, -0.015722, 1.357351, 0.761383],
+    "2": [-0.280042, -0.630130, 0.200149, -2.403063, 0.126288, 1.809672, 0.648045]
+  },
+  "known_poses": {
+    "start": [0.368511, -0.009129, 0.531829, -0.922423, 0.385891, -0.013270, 0.006947],
+    "change_gripper_position": [0.292925, 0.293387, 0.427362, 0.923773, 0.382706, 0.012931, 0.003552],
+    "change_gripper_position_2": [0.453090, 0.298850, 0.431330, 0.922454, 0.385125, 0.003584, 0.027282],
+    "put_gripper_position": [0.294585, 0.291700, 0.427324, -0.924542, -0.380545, -0.017417, 0.010260],
+    "pickup_position_shaft3": [0.598509, -0.308009, 0.375003, -0.920063, 0.391088, -0.005304, 0.022509],
+    "place_position_shaft3": [0.400150, -0.085034, 0.421599, -0.926386, 0.376307, 0.001816, 0.014104],
+    "pickup_position_shaft1": [0.594958, -0.215630, 0.375164, -0.919160, 0.393232, -0.022209, 0.004416],
+    "place_position_shaft1": [0.281608, 0.030369, 0.392146, -0.914412, 0.404090, 0.000438, 0.023702],
+    "pickup_position_shaft2": [0.602195, -0.147101, 0.464056, -0.913820, 0.405822, 0.001015, 0.015495],
+    "place_position_shaft2": [0.285432, -0.079371, 0.506632, -0.925244, 0.379180, -0.010881, 0.005309],
+    "pickup_position_gear3": [0.603070, -0.007922, 0.382495, 0.929434, -0.368768, -0.009886, 0.008024],
+    "place_position_gear3": [0.398150, -0.082634, 0.404199, -0.926386, 0.376307, 0.001816, 0.014104],
+    "pickup_position_gear2": [0.595364, 0.234269, 0.453482, -0.919729, 0.390888, -0.019933, 0.030133],
+    "place_position_gear2": [0.293610, -0.087542, 0.498679, -0.925263, 0.379046, 0.009193, 0.011348],
+    "pickup_position_gear1": [0.605938, 0.120471, 0.383833, -0.920739, 0.389865, 0.004042, 0.015137],
+    "place_position_gear1": [0.282308, 0.030369, 0.375146, -0.914412, 0.404090, 0.000438, 0.023702]
+  },
+  
+  "filter_params": {
+    "alpha": 0.05
+  },
+  "insertion_params": {
+    "A_x": 0.02,
+    "A_y": 0.03,
+    "freq_x": 0.8,
+    "freq_y": 1.0,
+    "phase": 1.57079632679,
+    "k_z": 0.0001,
+    "D_x": 0.1,
+    "D_y": 0.1
+  },
+  "gripper_params": {
+    "GRASP_WIDTH_WITHOUT_GRIPPER": 0.024,
+    "GRASP_WIDTH_GRIPPER": 0.028,
+    "GRASP_SPEED": 0.05,
+    "GRASP_WITH_GRIPPER_FORCE": 60.0,
+    "GRASP_OBJECT_FORCE": 40.0,
+    "GRIPPER_WIDTH_GRIPPER": 0.08,
+    "GRIPPER_SPEED": 0.05,
+    "CHANGE_GRIPPER_WIDTH_GRIPPER": 0.043,
+    "RELEASE_GRIPPER_WIDTH_GRIPPER": 0.08
+  },
+  "skills": [
+    {
+      "name": "go_to",
+      "type": "primitive",
+      "control_mode": "position_control",
+      "description": "Move to known pose"
+    },
+    {
+      "name": "go_to_with_rrt",
+      "type": "primitive",
+      "control_mode": "position_control",
+      "description": "Path-planned motion using RRT"
+    },
+    {
+      "name": "move_on_direction",
+      "type": "primitive",
+      "control_mode": "position_control",
+      "description": "Move linearly along specified axis"
+    },
+    {
+      "name": "homing_joint_position",
+      "type": "primitive",
+      "control_mode": "position_control",
+      "description": "Return to home joint configuration"
+    },
+    {
+      "name": "grasp",
+      "type": "primitive",
+      "control_mode": "gripper",
+      "description": "Grasp object with preset width and force"
+    },
+    {
+      "name": "open_gripper",
+      "type": "primitive",
+      "control_mode": "gripper",
+      "description": "Open gripper to release object"
+    },
+    {
+      "name": "change_gripper",
+      "type": "skill",
+      "control_mode": "position_control",
+      "description": "Swap to different gripper tool"
+    },
+    {
+      "name": "release_gripper",
+      "type": "primitive",
+      "control_mode": "gripper",
+      "description": "Open gripper to release external tool"
+    },
+    {
+      "name": "insertion",
+      "type": "skill",
+      "control_mode": "impedance_control",
+      "description": "Compliant insertion with Lissajous micro-motion"
+    },
+    {
+      "name": "gear_engagement",
+      "type": "skill",
+      "control_mode": "impedance_control",
+      "description": "Downward force and slight rotation for gear fit"
+    },
+    {
+      "name": "screw",
+      "type": "skill",
+      "control_mode": "position_control",
+      "description": "Rotate end-effector repeatedly to tighten screws"
+    },
+    {
+      "name": "press",
+      "type": "skill",
+      "control_mode": "impedance_control",
+      "description": "Press until contact detected via force"
+    },
+    {
+      "name": "push",
+      "type": "skill",
+      "control_mode": "impedance_control",
+      "description": "Push object along surface with force feedback"
+    }
+  ],
+
+  "tools": {
+    "default_gripper": {
+      "name": "panda_gripper",
+      "type": "built-in",
+      "grasp_width": 0.028,
+      "release_width": 0.08
+    },
+    "wide_gripper": {
+      "name": "external_wide",
+      "type": "clip-on",
+      "install_pose": "change_gripper_position",
+      "grasp_width": 0.075,
+      "release_width": 0.10
+    },
+    "narrow_gripper": {
+      "name": "external_narrow",
+      "type": "clip-on",
+      "install_pose": "change_gripper_position_2",
+      "grasp_width": 0.02,
+      "release_width": 0.045
+    },
+    "three_finger_gripper": {
+      "name": "external_three_finger",
+      "type": "clip-on",
+      "install_pose": "put_gripper_position",
+      "max_diameter": 0.06,
+      "min_diameter": 0.0
+    },
+  "objects": {
+    "shaft1": {
+      "type": "shaft",
+      "gripper": "narrow_gripper",
+      "grasp_width": 0.035,
+      "requires_insertion": true
+    },
+    "shaft2": {
+      "type": "shaft",
+      "gripper": "three_finger_gripper",
+      "grasp_width": 0.015,
+      "requires_insertion": true
+    },
+    "shaft3": {
+      "type": "shaft",
+      "gripper": "narrow_gripper",
+      "grasp_width": 0.03,
+      "requires_insertion": true
+    },
+    "gear1": {
+      "type": "gear",
+      "gripper": "default_gripper",
+      "grasp_width": 0.05,
+      "requires_insertion": false
+    },
+    "gear2": {
+      "type": "gear",
+      "gripper": "wide_gripper",
+      "grasp_width": 0.08,
+      "requires_insertion": true
+    },
+    "gear3": {
+      "type": "gear",
+      "gripper": "default_gripper",
+      "grasp_width": 0.05,
+      "requires_insertion": false
+    }
+  }
+
+
+  }
+  
+
+
+
+
+}

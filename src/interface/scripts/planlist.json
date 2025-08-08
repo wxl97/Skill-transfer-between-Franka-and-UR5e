@@ -1,0 +1,25 @@
+{
+  "shaft1": [
+    [
+      "go_to",
+      "pickup_position_shaft1"
+    ],
+    ["grasp"],
+    [
+      "go_to",
+      "place_position_shaft1"
+    ],
+    ["insertion"],
+    ["release_gripper"]
+  ],
+  "gear1": [
+    ["start", "release_gripper"],
+    ["pickup_position_gear1_top"],
+    ["pickup_position_gear1", "grasp_without_gripper"],
+    ["pickup_position_gear1_top"],
+    ["place_position_gear1_top"],
+    ["place_position_gear1", "release_gripper"],
+    ["place_position_gear1_top"],
+    ["start", "release_gripper"]
+  ]
+}

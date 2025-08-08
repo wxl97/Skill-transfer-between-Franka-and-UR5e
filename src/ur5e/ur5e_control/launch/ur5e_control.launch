@@ -1,0 +1,20 @@
+<launch>
+  <arg name="robot_ip" default="172.16.15.10"/>
+  <arg name="program_file" default="/programs/xinlong.urp"/>
+
+  <!-- 1. 启动 ur_robot_driver -->
+  <include file="$(find ur_robot_driver)/launch/ur5e_bringup.launch">
+    <arg name="robot_ip" value="$(arg robot_ip)"/>
+  </include>
+
+  <!-- 2. 延时调用 Dashboard 服务加载 externalcontrol.urp -->
+  <node pkg="ur5e_control" type="load_externalcontrol.sh" name="load_and_play_program" output="screen" launch-prefix="bash" />
+
+  <!-- 3. 启动 MoveIt -->
+  <include file="$(find ur5e_moveit_config)/launch/moveit_planning_execution.launch"/>
+
+
+  <!-- 4. 延时执行 home 指令 -->
+  <!-- <node pkg="ur5e_control" type="ur5e_control.py" name="ur5e_homing" args="test" output="screen"
+        launch-prefix="bash -c 'sleep 60; exec'" /> -->
+</launch>

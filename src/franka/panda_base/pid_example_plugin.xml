@@ -1,0 +1,7 @@
+<library path="lib/libpid_example_controller">
+  <class name="pid_example_controller/PidExampleController" type="pid_example_controller::PidExampleController" base_class_type="controller_interface::ControllerBase">
+    <description>
+      A PID controller that executes based on joint position and velocitz feedback 
+    </description>
+  </class>
+</library>

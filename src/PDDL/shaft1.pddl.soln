@@ -1,0 +1,5 @@
+(goto_pickup shaft1 start pickup_position_shaft1)
+(grasp shaft1)
+(goto_place shaft1 pickup_position_shaft1 place_position_shaft1)
+(insertion shaft1)
+(release_gripper shaft1)
