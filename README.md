@@ -98,7 +98,6 @@ chmod +x ~/robot_ws/src/Skill-transfer-between-Franka-and-UR5e/src/ur5e/ur5e_con
 
 
 
-
 ## 4) Hardware Setup
 
 ### 4.1 Franka Emika Panda
