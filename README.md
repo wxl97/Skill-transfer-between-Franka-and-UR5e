@@ -17,7 +17,7 @@ The stack is built on **ROS Noetic** (Ubuntu 20.04, optional RT kernel) and inte
 
 ---
 
-## 2） Dependencies & Robot Environments
+## 2) Dependencies & Robot Environments
 
 
 > If you already have **ROS Noetic + MoveIt** installed, you can skip the `apt install` part.
@@ -36,8 +36,7 @@ rosdep update
 ```
 
 **Robot Environments**
-
-> TL;DR  
+  
 > - **Franka**: You **must install `libfranka` at the system level first**, then build `franka_ros` in your catkin workspace.  
 > - **UR5e**: On the **PC side**, the ROS driver packages are usually enough (no extra system libraries). On the **robot side**, install & enable the **External Control** URCap and provide an External Control program (this project defaults to `/programs/xinlong.urp`).
 
@@ -57,10 +56,16 @@ rosdep update
   Build in your catkin workspace:  
   → universal_robot: https://github.com/ros-industrial/universal_robot
 - **Robot-side requirement: External Control URCap (teach pendant)**  
-  Install & enable the External Control URCap and create an External Control program.  
-  This project **loads `/programs/xinlong.urp` by default** (adjust scripts if you use a different path/name).  
-  Setup instructions are covered in the driver docs:  
-  → Universal Robots ROS Driver: https://github.com/UniversalRobots/Universal_Robots_ROS_Driver
+  Download and **install** the *External Control URCap* on the robot (System → URCaps), then **enable** it. If urcap is already installed on your robot, please ignore this step.
+  Create an **External Control** program on the pendant (Host IP = your ROS PC) and **save it as** `/programs/xinlong.urp`.  
+  *You do not need to load/run it at this step; the launch script will load it automatically at runtime.*  
+  - URCap download: https://github.com/UniversalRobots/Universal_Robots_ExternalControl_URCap/releases  
+  - Driver setup guide (program creation, network settings): https://github.com/UniversalRobots/Universal_Robots_ROS_Driver
+
+
+
+> If you save the program under a **different path/name**, update `src/ur5e/ur5e_control/scripts/load_externalcontrol.sh` accordingly.
+
 
 > Optional: If you prefer **upstream repos** instead of the vendored copies in this repo, remove/rename the vendored folders and clone the upstream sources using the links above. Then run `rosdep install --from-paths src --ignore-src -r -y` and `catkin_make` as usual.
 
@@ -79,7 +84,7 @@ cd ..
 ```bash
 # Run from the workspace root: ~/robot_ws
 rosdep install --from-paths src --ignore-src -r -y
-
+```
 
 **Build & source**
 ```bash
