@@ -264,7 +264,7 @@ class Franka_control(object):
         gear_engagement(self.move_group, self.force_get_z, self.force_z, self.move_down, self.rotate_angle)
 
     def screw(self):
-        screw(self.open_gripper, self.grasp)
+        screw(self.move_group, self.clients["joint_trajectory"] ,self.open_gripper, self.grasp)
 
     def get_current_joint_positions(self):
         return get_current_joint_positions(self.move_group)

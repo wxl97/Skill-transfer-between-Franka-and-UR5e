@@ -1,0 +1,51 @@
+{
+  "franka": {
+    "skills": [
+      "go_to",
+      "go_to_with_RRT",
+      "plan_and_execute",
+      "move_on_direction",
+      "move_down",
+      "insertion",
+      "grasp",
+      "grasp_without_gripper",
+      "open_gripper",
+      "change_gripper",
+      "release_gripper",
+      "rotate_angle",
+      "gear_engagement",
+      "screw",
+      "get_current_joint_positions",
+      "read_current_pose",
+      "homing_joint_position",
+      "move_to_safe_pose"
+    ]
+  },
+  "ur5e": {
+    "skills": [
+      "gripperMove",
+      "getPosition",
+      "move_to_target",
+      "cartesian_move",
+      "cartesian_relative_move",
+      "add_safe_pose",
+      "safe_move",
+      "move_to_target_pose",
+      "homing",
+      "shutdown",
+      "get_current_pose",
+      "rotate_joint",
+      "force_callback",
+      "press",
+      "press_force",
+      "push",
+      "rotate_joint_6",
+      "gear_engagement",
+      "check_grasp_success_by_position",
+      "plan_and_execute",
+      "load_plan",
+      "desk_cleanup",
+      "gear_assembling"
+    ]
+  }
+}

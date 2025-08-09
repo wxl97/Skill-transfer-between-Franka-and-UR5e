@@ -1,0 +1,61 @@
+{
+  "poses": {
+    "gripper_pose_1": [0.29003609242900497,0.24138599199788655, 0.2845015784995799,0.6990476811778046, -0.7132429210313296, -0.03568994426570673, 0.03664836854406673],
+    "gripper_pose_2": [0.29003609242900497,0.41738599199788655, 0.2857015784995799,0.6990476811778046, -0.7132429210313296, -0.03568994426570673, 0.03664836854406673],
+    "gripper_pose_3": [-0.334195458313977, 0.25438599199788655, 0.2810798840507104, 0.6926060767737865, 0.719115813664144, 0.028730432986686625, 0.048413130187763456],
+    "gripper_pose_4": [-0.337195458313977, 0.4319563965504313, 0.2808798840507104, 0.6926060767737865, 0.719115813664144, 0.028730432986686625, 0.048413130187763456],
+    "tape_pose": [0.08020998952326158, 0.44082903449919014, 0.2885338299507632, 0.9997773408649737, -0.003837991588368589, -0.006970075462950805, 0.01954370900239581],
+    "tape_box_pose": [0.1720279012293059, 0.379893420595374, 0.30480499698765406, -0.9990638991632087, 0.03824988278019675, 0.01249631245644593, 0.015878099102161897],
+    "cap_pose": [0.08069315786994348, 0.3858952990784292, 0.29274058915775156, 0.9998605953236932, -0.0053712076635465495, -0.006584279210497978, 0.014373145600837278],
+    "tape_box_pose_cap": [0.1729279012293059, 0.378493420595374, 0.30850499698765406, -0.9990638991632087, 0.03824988278019675, 0.01249631245644593, 0.015878099102161897],
+    "binder_clip": [0.1847797101596527, 0.29459526141194775, 0.2747210253294315, 0.9998016846377653, -0.01597893523647261, -0.004136812722504809, 0.011142342872758067],
+    "sticky_note": [0.0747797101596527, 0.26359526141194775, 0.28672210253294315, 0.9998016846377653, -0.01597893523647261, -0.004136812722504809, 0.011142342872758067],
+    "push_large_box": [-0.11427270599509906, 0.1616867550175647, 0.23282645131048152, 0.9999454627162566, -0.0076623164028748825, 0.006606627440033706, 0.0025909408295449804],
+    "move_tape_box_pose": [0.16158849197143568, 0.3869516315574512, 0.2606474921216017, 0.9999999338943185, 0.00020410766180665692, -0.00020411403504589363, 0.00022110830278149565],
+    "put_tape_box_pose": [-0.08048849197143568, 0.2569516315574512, 0.2606474921216017, 0.9999999338943185, 0.00020410766180665692, -0.00020411403504589363, 0.00022110830278149565],
+    "move_binder_clip_box": [0.1816145841777211, 0.22193064412031507, 0.22077543389392738, 0.9999999926493446, 7.71413184427539e-05, -5.1133848556022154e-05, 7.833171223733975e-05],
+    "put_binder_clip_box": [-0.15248849197143568, 0.2569516315574512, 0.2256474921216017, 0.9999999338943185, 0.00020410766180665692, -0.00020411403504589363, 0.00022110830278149565],
+    "shaft_pose_1": [0.14369431510187974, 0.2569207089935488, 0.3256725074597286, 0.9999999652499849, 1.6461387312695917e-06, -0.0001896613199867806, 0.0001831008000572563],
+    "hole_pose_1": [-0.024276779551335066, 0.25309708615838502, 0.3724878843033385, 0.9999998491418547, -2.8630402395980427e-05, -0.00027074644704994766, 0.0004770670072073083],
+    "shaft_pose_2": [0.13928184532002857, 0.3818883104357458, 0.36277929264402126, 0.9999999717825309, -0.00018019792642356104, -0.00012999638661795765, 8.405108142915141e-05],
+    "hole_pose_2": [-0.14125655612077673, 0.36442239604764504, 0.379730161029172, 0.999999988968839, 4.391155633223172e-05, 6.309082044807018e-05, 0.0001270969919811964],
+    "gear_pose_3": [-0.06739894659877901, 0.5168205249379753, 0.2706540851182947, 0.999998806436675, -2.118442396318147e-05, -0.0001700254130662976, 0.0015355024598802528],
+    "put_gear_pose_3": [-0.025276821337661858, 0.2548839108421758, 0.3074614324318014, 0.9999998124456349, -9.147890717622178e-05, -0.0003168975475866121, 0.000516058377435521],
+    "gear_pose_1": [-0.21128692269017157, 0.5249225166661387, 0.2715792870976222, 0.999999928396554, -5.057058107329426e-05, 2.6533962812367507e-05, 0.00037409283848134037],
+    "gear_pose_2": [0.0966882951369765, 0.504865611791847, 0.3429448716377327, -0.9999999895005082, 2.4683576332476613e-05, -6.970069018618338e-05, 0.00012462551319395598],
+    "put_gear_pose_2": [-0.14230295728220787, 0.2480562882191704, 0.3955460664134095, 0.9999999335845632, -3.686899185901448e-05, -3.161486149694329e-05, 0.0003612091459215146],
+    "put_gear_pose_1": [-0.13824476081967432, 0.36700635110923104, 0.3266595856619401, 0.9999999851965284, 4.8129729512445874e-05, 6.661166550097954e-05, 0.0001511732714054253]
+  },
+  "plans": {
+    "gear_assembling": [
+      ["gripper_pose_1", "move_to"], ["gripper_pose_1", "grasp"], ["gripper_pose_1", "safe_move"],
+      ["shaft_pose_1", "move_to"], ["shaft_pose_1", "grasp"], ["shaft_pose_1", "safe_move"],
+      ["hole_pose_1", "move_to"], ["hole_pose_1", "cartesian_relative_move_z", -0.03], ["hole_pose_1", "release"], ["hole_pose_1", "safe_move"],
+      ["shaft_pose_2", "move_to"], ["shaft_pose_2", "grasp"], ["shaft_pose_2", "safe_move"],
+      ["hole_pose_2", "move_to"], ["hole_pose_2", "cartesian_relative_move_z", -0.015], ["hole_pose_2", "release"], ["hole_pose_2", "safe_move"],
+      ["gear_pose_1", "move_to"], ["gear_pose_1", "grasp"], ["gear_pose_1", "safe_move"],
+      ["put_gear_pose_1", "move_to"], ["put_gear_pose_1", "release"], ["put_gear_pose_1", "safe_move"],
+      ["gear_pose_2", "move_to"], ["gear_pose_2", "grasp"], ["gear_pose_2", "safe_move"],
+      ["put_gear_pose_2", "move_to"], ["put_gear_pose_2", "cartesian_relative_move_z", -0.045], ["put_gear_pose_2", "release"], ["put_gear_pose_2", "safe_move"],
+      ["gear_pose_3", "move_to"], ["gear_pose_3", "grasp"], ["gear_pose_3", "safe_move"],
+      ["put_gear_pose_3", "move_to"], ["put_gear_pose_3", "cartesian_relative_move_z", -0.02], ["put_gear_pose_3", "release"], ["put_gear_pose_3", "safe_move"]
+    ],
+    "desk_cleanup": [
+      ["gripper_pose_1", "move_to"], ["gripper_pose_1", "grasp"], ["gripper_pose_1", "safe_move"],
+      ["tape_pose", "move_to"], ["tape_pose", "grasp"], ["tape_pose", "safe_move"],
+      ["tape_box_pose", "move_to"], ["tape_box_pose", "release"], ["tape_box_pose", "safe_move"],
+      ["cap_pose", "move_to"], ["cap_pose", "grasp"], ["cap_pose", "safe_move"],
+      ["tape_box_pose_cap", "move_to"], ["tape_box_pose_cap", "release"], ["tape_box_pose_cap", "safe_move"],
+      ["sticky_note", "move_to"], ["sticky_note", "grasp"], ["sticky_note", "cartesian_relative_move_z", 0.15], ["sticky_note", "cartesian_relative_move_y", 0.01], ["sticky_note", "cartesian_relative_move_x", -0.24], ["sticky_note", "cartesian_relative_move_z", -0.13], ["sticky_note", "release"], ["sticky_note", "cartesian_relative_move_z", 0.18],
+      ["gripper_pose_4", "move_to"], ["gripper_pose_4", "release"], ["gripper_pose_4", "safe_move"],
+      ["gripper_pose_3", "move_to"], ["gripper_pose_3", "grasp"], ["gripper_pose_3", "safe_move"],
+      ["move_tape_box_pose", "move_to"], ["move_tape_box_pose", "grasp"], ["move_tape_box_pose", "safe_move"],
+      ["put_tape_box_pose", "move_to"], ["put_tape_box_pose", "release"], ["put_tape_box_pose", "safe_move"],
+      ["gripper_pose_2", "move_to"], ["gripper_pose_2", "grasp"], ["gripper_pose_2", "safe_move"],
+      ["binder_clip", "move_to"], ["binder_clip", "grasp"], ["binder_clip", "cartesian_relative_move_z", 0.035], ["binder_clip", "cartesian_relative_move_y", -0.08], ["binder_clip", "release"], ["binder_clip", "cartesian_relative_move_z", 0.1], ["binder_clip", "cartesian_relative_move_y", -0.08], ["binder_clip", "cartesian_relative_move_z", -0.1], ["binder_clip", "push"], ["binder_clip", "cartesian_relative_move_z", -0.005], ["binder_clip", "press"], ["binder_clip", "safe_move"],
+      ["move_binder_clip_box", "move_to"], ["move_binder_clip_box", "grasp"], ["move_binder_clip_box", "safe_move"],
+      ["put_binder_clip_box", "move_to"], ["put_binder_clip_box", "release"], ["put_binder_clip_box", "safe_move"],
+      ["push_large_box", "move_to"], ["push_large_box", "push"], ["push_large_box", "cartesian_relative_move_y", -0.03], ["push_large_box", "safe_move"]
+    ]
+  }
+}

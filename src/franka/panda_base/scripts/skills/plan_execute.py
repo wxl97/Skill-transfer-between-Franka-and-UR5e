@@ -2,7 +2,7 @@ import copy
 from skills.plan import Plan, PlanEl
 import os
 import json
-
+base_dir = os.path.dirname(os.path.realpath(__file__))
 
 def plan_and_execute(self, plan_name="gear_assembling"):
     """
@@ -17,7 +17,7 @@ def plan_and_execute(self, plan_name="gear_assembling"):
     self.n_executions += 1
 
 def load_plan(self, plan_name="gear_assembling"):
-    config_path = "/home/blackbird/xinlong/transfer_ws/src/franka/panda_base/scripts/plan_config.json"
+    config_path = os.path.join(base_dir, "plan_config.json")
     
     if not os.path.exists(config_path):
         raise FileNotFoundError(f"Plan config file not found: {config_path}")

@@ -1,8 +1,8 @@
 import numpy as np
 import time
 
-from rtde_control import RTDEControlInterface
-from rtde_receive import RTDEReceiveInterface
+# from rtde_control import RTDEControlInterface
+# from rtde_receive import RTDEReceiveInterface
 from math import pi, sin
 
 def impedance_control(deep=0.01):

@@ -46,7 +46,7 @@ def insertion(move_group, pub, initial_pose, amplitude_multi, deepth,
         # 使用李萨如曲线 skill 生成 x/y
         msg.pose.position.x = lissajous(initial_pose.position.x, amplitude_multi, A_x, freq_x, t, phase)
         msg.pose.position.y = lissajous(initial_pose.position.y, amplitude_multi, A_y, freq_y, t, 0)
-        msg.pose.position.z = initial_pose.position.z - 0.0085
+        msg.pose.position.z = initial_pose.position.z - 0.01
 
         # Maintain initial orientation
         msg.pose.orientation.x = initial_pose.orientation.x
@@ -75,4 +75,4 @@ def insertion(move_group, pub, initial_pose, amplitude_multi, deepth,
     (plan, _) = move_group.compute_cartesian_path([update_pose], 0.01)
     move_group.execute(plan, wait=True)
     
-    move_group.move_down(deepth)
+    move_down(move_group, deepth)

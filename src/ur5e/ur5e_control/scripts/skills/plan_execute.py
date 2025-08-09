@@ -17,7 +17,7 @@ def plan_and_execute(self, plan_name="all"):
     self.n_executions += 1
 
 def load_plan(self, plan_name="all"):
-    config_path = "/home/blackbird/xinlong/catkin_ws/src/panda_base/scripts/plan_config.json"
+    config_path = "../plan_config.json"
     
     if not os.path.exists(config_path):
         raise FileNotFoundError(f"Plan config file not found: {config_path}")

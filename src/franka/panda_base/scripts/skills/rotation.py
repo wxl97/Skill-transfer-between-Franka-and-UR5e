@@ -33,7 +33,7 @@ def rotate_angle(move_group, client, angle, duration=5.0, acc=0.0):
     rospy.sleep(1.0)
 
 
-def screw(open_gripper, grasp):
+def screw(move_group, client, open_gripper, grasp):
     """
     Executes a screw-like operation by alternating gripper open/close and rotating the 7th joint.
 
@@ -44,7 +44,7 @@ def screw(open_gripper, grasp):
     ''' Execute the place with rotation operation 6 times. '''
     for i in range(6): 
         open_gripper()
-        rotate_angle(-90, duration=8.0)
+        rotate_angle(move_group, client, -90, duration=8.0)
         grasp()
-        rotate_angle(90, duration=8.0)
+        rotate_angle(move_group, client, 90, duration=8.0)
     open_gripper()

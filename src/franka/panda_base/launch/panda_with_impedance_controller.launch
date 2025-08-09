@@ -44,14 +44,6 @@
   </include>
 
   <!-- Panda control node with mode selection -->
-  <node name="panda_control"
-        pkg="panda_base"
-        type="panda_control.py"
-        respawn="false"
-        output="screen">
-    <!-- Passing the mode argument to the panda_control node -->
-    <param name="mode" value="$(arg mode)"/>
-  </node>
 
   <!-- 启动 Rviz -->
   <!-- <node pkg="rviz" type="rviz" output="screen" name="rviz"

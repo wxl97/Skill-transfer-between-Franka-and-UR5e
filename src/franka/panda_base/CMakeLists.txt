@@ -114,7 +114,6 @@ find_package(Franka 0.7.0 REQUIRED)
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
  INCLUDE_DIRS include
- LIBRARIES pid_pid_example_controller
  CATKIN_DEPENDS
   controller_interface
   franka_hw
@@ -139,9 +138,7 @@ include_directories(
 )
 
 ## Declare a C++ library
-add_library(pid_example_controller
-  src/pid_joint_position_controller.cpp
-)
+
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -161,16 +158,9 @@ add_library(pid_example_controller
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-add_dependencies(pid_example_controller
-  ${${PROJECT_NAME}_EXPORTED_TARGETS}
-  ${catkin_EXPORTED_TARGETS}
-)
+
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(pid_example_controller PUBLIC
-  ${Franka_LIBRARIES}
-  ${catkin_LIBRARIES}
-)
 
 #############
 ## Install ##
@@ -189,13 +179,6 @@ catkin_install_python(PROGRAMS
 
 
 
-target_include_directories(pid_example_controller SYSTEM PUBLIC
-  ${Franka_INCLUDE_DIRS}
-  ${catkin_INCLUDE_DIRS}
-)
-target_include_directories(pid_example_controller PUBLIC
-  include
-)
 ## Mark executables for installation
 ## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_executables.html
 # install(TARGETS ${PROJECT_NAME}_node
