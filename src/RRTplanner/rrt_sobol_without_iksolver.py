@@ -209,7 +209,7 @@ def get_target_point(path, targetL):
     for i in range(len(path) - 1):
         diff = [p2 - p1 for p1, p2 in zip(path[i], path[i + 1])]
         d = math.sqrt(sum(x**2 for x in diff))
-        if d < 1e-6:  # 如果两点几乎重合，则跳过
+        if d < 1e-6:  # If the segment is too short, skip it
             continue
         le += d
         if le >= targetL:
@@ -217,7 +217,7 @@ def get_target_point(path, targetL):
             last_pair_len = d
             break
 
-    if last_pair_len < 1e-6:  # 如果所有点都重合，直接返回最后一个点
+    if last_pair_len < 1e-6:  # If the last segment is too short
         return path[-1], len(path) - 1
 
     part_ratio = (le - targetL) / last_pair_len
@@ -238,12 +238,11 @@ def line_collision_check(first, second, obstacle_list, robot_radius):
 
 def path_smoothing(path, max_iter, obstacle_list, robot_radius):
     if len(path) < 2:
-        return path  # 路径太短，无法平滑
+        return path  # The path is too short or has no length
 
     le = get_path_length(path)
     if le < 1e-6:
-        return path  # 路径总长度接近0，无需平滑
-
+        return path  # The path is too short or has no length
     for _ in range(max_iter):
         pick_points = [random.uniform(0, le), random.uniform(0, le)]
         pick_points.sort()
@@ -284,7 +283,11 @@ def densify_path(path, max_segment_length=0.3):
 
 def is_in_box(point, box_center, box_size):
     """
-    判断点point(x,y,z)是否在以box_center为中心，box_size为长宽高的立方体内
+    To check if a point is inside a box defined by its center and size.
+    Args:
+        point: Point to check [x, y, z].
+        box_center: Center of the box [x, y, z].
+        box_size: Size of the box [width, height, depth].
     """
     for i in range(3):
         if abs(point[i] - box_center[i]) > box_size[i] / 2.0:

@@ -2,6 +2,8 @@ import copy
 from skills.plan import Plan, PlanEl
 import os
 import json
+from pathlib import Path
+base_dir = Path(__file__).resolve().parent
 
 
 def plan_and_execute(self, plan_name="all"):
@@ -17,7 +19,8 @@ def plan_and_execute(self, plan_name="all"):
     self.n_executions += 1
 
 def load_plan(self, plan_name="all"):
-    config_path = "../plan_config.json"
+    #config_path = "../plan_config.json"
+    config_path = (base_dir / "plan_config.json").as_posix()
     
     if not os.path.exists(config_path):
         raise FileNotFoundError(f"Plan config file not found: {config_path}")

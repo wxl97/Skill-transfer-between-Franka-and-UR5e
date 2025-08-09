@@ -5,7 +5,7 @@ import os
 
 # rrt_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '/../'))
 
-# 把RRT路径加入sys.path
+# Add RRT path to sys.path
 # if rrt_path not in sys.path:
 #     sys.path.insert(0, rrt_path)
 
@@ -32,14 +32,14 @@ class RRTPlanner:
         move_group=None
     ):
         """
-        初始化轨迹执行器
-        :param joint_names: 关节名称列表（默认panda 7轴）
-        :param controller_action: 控制器action名称
-        :param rand_area: 采样空间
-        :param robot_radius: 机器人半径
-        :param goal_sample_rate: 目标采样比例
-        :param path_resolution: 路径分辨率
-        :param client: 可选，外部传入actionlib client
+        Initialize the trajectory executor
+        :param joint_names: List of joint names (default: Panda 7 DOF)
+        :param controller_action: Controller action name
+        :param rand_area: Sampling space
+        :param robot_radius: Robot radius
+        :param goal_sample_rate: Goal sampling rate
+        :param path_resolution: Path resolution
+        :param client: Optional, external actionlib client
         """
         if joint_names is None:
             joint_names = [
@@ -67,9 +67,9 @@ class RRTPlanner:
 
     def wait_for_server(self):
         if not self.external_client:
-            rospy.loginfo("等待控制器服务...")
+            rospy.loginfo("Waiting for controller server...")
             self.client.wait_for_server()
-            rospy.loginfo("控制器服务已连接")
+            rospy.loginfo("Controller server connected.")
 
     @staticmethod
     def create_trajectory(points, joint_names, time_step=1.0):
@@ -86,11 +86,11 @@ class RRTPlanner:
         goal = FollowJointTrajectoryGoal()
         goal.trajectory = trajectory
         goal.goal_time_tolerance = rospy.Duration.from_sec(2.0)
-        rospy.loginfo("发送轨迹到控制器...")
+        rospy.loginfo("Sending trajectory to controller...")
         self.client.send_goal(goal)
         self.client.wait_for_result()
         result = self.client.get_result()
-        rospy.loginfo(f"轨迹执行完成，结果: {result}")
+        rospy.loginfo(f"Trajectory execution completed, result: {result}")
 
     def ik_solver(self, pose):
         rospy.wait_for_service('/compute_ik')
@@ -108,7 +108,7 @@ class RRTPlanner:
             ik_response = ik_service(ik_request)
 
             if ik_response.error_code.val == ik_response.error_code.SUCCESS:
-                joint_positions = ik_response.solution.joint_state.position[:7]  # 只取前7个关节
+                joint_positions = ik_response.solution.joint_state.position[:7]  # Only take the first 7 joints
                 rospy.loginfo("Computed joint positions: %s", joint_positions)
                 return joint_positions
             else:
@@ -127,11 +127,11 @@ class RRTPlanner:
         time_step=1.0,
     ):
         """
-        规划并执行关节空间轨迹
-        :param start_pose: 起始关节角度
-        :param target_pose: 目标关节角度
-        :param obstacle_list: 障碍物列表
-        :param time_step: 轨迹时间间隔
+        Plan and execute a joint-space trajectory
+        :param start_pose: Start pose (joint angles or Cartesian pose)
+        :param target_pose: Target pose (joint angles or Cartesian pose)
+        :param obstacle_list: List of obstacles
+        :param time_step: Time interval between trajectory points
         :return: True/False
         """
         if obstacle_list is None:
@@ -139,13 +139,12 @@ class RRTPlanner:
 
         start_joint = self.ik_solver(start_pose)
         if start_joint is None:
-            rospy.logerr("起点位姿逆解失败！")
+            rospy.logerr("Failed to compute IK for start pose!")
             return False
         target_joint = self.ik_solver(target_pose)
         if target_joint is None:
-            rospy.logerr("目标位姿逆解失败！")
+            rospy.logerr("Failed to compute IK for target pose!")
             return False
-
 
         rrt = RRTSobol(
             start=start_joint,
@@ -158,14 +157,14 @@ class RRTPlanner:
         )
         path = rrt.planning()
         if not path:
-            rospy.logerr("路径规划失败！")
+            rospy.logerr("Path planning failed!")
             return False
 
         trajectory = self.create_trajectory(path, self.joint_names, time_step)
         self.send_trajectory(trajectory)
         return True
 
-# 支持直接运行测试
+# Support direct execution for testing
 if __name__ == "__main__":
     rospy.init_node("track_rrt_trajectory_class", anonymous=True)
     start_pose = [-0.594591, 0.430150, 0.136105, -1.626641, -0.012580, 2.060708, 0.338735]
@@ -177,4 +176,4 @@ if __name__ == "__main__":
     executor = RRTPlanner()
     executor.wait_for_server()
     result = executor.plan_and_execute(start_pose, target_pose, obstacle_list=obstacle_list)
-    print("轨迹执行结果:", result)
+    print("Trajectory execution result:", result)
